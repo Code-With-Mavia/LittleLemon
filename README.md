@@ -143,7 +143,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## 🌐 Social & Contact
 
-[![GitHub](https://img.shields.io/badge/GitHub-Code-With-Mavia-181717?logo=github\&logoColor=white)](https://github.com/Code-With-Mavia)
+[![GitHub](https://img.shields.io/badge/GitHub-Code-With-Mavia-181717?logo=github\&logoColor=white)]([https://github.com/Code-With-Mavia](https://github.com/Code-With-Mavia))
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Mavia-blue?logo=linkedin\&logoColor=white)]([https://www.linkedin.com/in/your-profile](https://www.linkedin.com/in/maawiah-qaiser-10793722b/))
 [![Email](https://img.shields.io/badge/Email-Contact-red?logo=gmail\&logoColor=white)](mailto:maviaqaiser09@gmail.com)
 
@@ -156,7 +156,3 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 * GitHub: [Code-With-Mavia](https://github.com/Code-With-Mavia)
 * Email: `maviaqaiser09@gmail.com`
 
-```
-
-Do you want me to do that next?
-```
