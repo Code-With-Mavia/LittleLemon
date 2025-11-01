@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="contact-page">
+<article>
+<h1>Contact Us</h1>
+<p>We'd love to hear from you. Please fill out the form below and we'll get back to you as soon as possible!</p>
+
+    <!-- Contact Form -->
+    <form action="https://formspree.io/f/mnngrdka" method="POST" class="contact-form">
+        <div class="form-group">
+            <label for="email">Your Email Address:</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="message">Your Message:</label>
+            <textarea name="message" id="message" rows="6" required></textarea>
+        </div>
+        
+        <button type="submit" id="contact-button">Send Message</button>
+    </form>
+</article>
+
+
+</section>
+{% endblock content %}
