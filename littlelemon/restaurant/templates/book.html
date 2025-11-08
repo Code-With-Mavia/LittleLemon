@@ -2,38 +2,103 @@
 {% load static %}
 
 {% block content %}
-
 <section class="booking-page">
-<article>
-<h1>Make a reservation</h1>
-<!--Begin row: Uses display: flex; for side-by-side columns -->
-<div class="row">
-<!--Begin col: Form is styled using the .booking-form class -->
-<div class="column booking-form">
-<form action="" method="post">
-{% csrf_token %}
-<!-- Django form rendering -->
-{{form.as_p}}
-<!-- Note: The ID is set to booking-button for full-width styling -->
-<input type="submit" id="booking-button" value="Book Now">
-</form>
-</div>
-<!--End col-->
+  <article>
+    <h1>Make a reservation</h1>
+    <div class="row">
+      <div class="column booking-form">
+        <form id="booking-form">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" id="booking-button" value="Book Now">
+        </form>
+      </div>
 
-  <!--Begin col: Google Maps iframe -->
-  <div class="column">
-    <div class="videowrap">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11898.289517452584!2d-87.60853049433447!3d41.79442860243028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2912ce6f7027%3A0xc0cfb5545d4a37b2!2sHyde%20Park%2C%20Chicago%2C%20IL%2C%20USA!5e0!3m2!1sen!2spt!4v1662384760663!5m2!1sen!2spt"
-        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="column">
+        <div class="videowrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11898.289517452584!2d-87.60853049433447!3d41.79442860243028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2912ce6f7027%3A0xc0cfb5545d4a37b2!2sHyde%20Park%2C%20Chicago%2C%20IL%2C%20USA!5e0!3m2!1sen!2spt!4v1662384760663!5m2!1sen!2spt"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
     </div>
-  </div>
-  <!--End col-->
-</div>
-<!--End row-->
-
-
-</article>
+  </article>
 </section>
+
+<script>
+  console.log("Hello"); // Debugging line
+
+  // Select date input
+  const reservationDateInput = document.getElementById("id_reservation_date");
+  reservationDateInput.type = "date";
+
+  // Add change listener to update bookings dynamically
+  reservationDateInput.addEventListener("change", () => {
+    getBookings(reservationDateInput.value);
+  });
+
+  async function getBookings(date) {
+    const response = await fetch(`/bookings/?date=${date}`);
+    const data = await response.json();
+    console.log(data);
+
+    // Example: handle reserved slots (part of assessment instructions)
+    const reserved_slots = [];
+    data.forEach(item => {
+      console.log(item.fields);
+      reserved_slots.push(item.fields.reservation_slot);
+    });
+
+    // Update time slots dynamically (example for 10–19)
+    let slot_options = '<option value="0" disabled>Select time</option>';
+    for (let i = 10; i < 20; i++) {
+      const label = `${i}:00`; // simple formatTime replacement
+      if (reserved_slots.includes(i)) {
+        slot_options += `<option value=${i} disabled>${label}</option>`;
+      } else {
+        slot_options += `<option value=${i}>${label}</option>`;
+      }
+    }
+
+    const timeSelect = document.getElementById("id_reservation_slot");
+    if (timeSelect) timeSelect.innerHTML = slot_options;
+  }
+
+  // Handle form submission via fetch
+  const bookingForm = document.getElementById("booking-form");
+  bookingForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    const formData = {
+      first_name: document.getElementById("id_first_name").value,
+      last_name: document.getElementById("id_last_name").value,
+      guest_number: document.getElementById("id_guest_number").value,
+      comment: document.getElementById("id_comment").value,
+      reservation_date: document.getElementById("id_reservation_date").value,
+      reservation_slot: parseInt(document.getElementById("id_reservation_slot").value),
+    };
+
+    const res = await fetch("/bookings/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": csrfToken,
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await res.json();
+    if (result.error) {
+      alert("This slot is already booked.");
+    } else {
+      alert("Reservation successful!");
+      getBookings(formData.reservation_date);
+    }
+  });
+
+  // Initialize bookings for today
+  getBookings(reservationDateInput.value);
+</script>
 {% endblock %}

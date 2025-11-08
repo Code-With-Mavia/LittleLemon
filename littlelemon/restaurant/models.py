@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 
 
@@ -7,6 +8,8 @@ class Booking(models.Model):
    last_name = models.CharField(max_length=200)
    guest_number = models.IntegerField()
    comment = models.CharField(max_length=1000)
+   reservation_date = models.DateField(default=datetime.now)
+   reservation_slot = models.IntegerField(default=1)  # Or TimeField if you want exact times
 
    def __str__(self):
       return self.first_name + ' ' + self.last_name
@@ -17,6 +20,7 @@ class Menu(models.Model):
    name=models.CharField(max_length=200)
    price=models.IntegerField(null=False)
    menu_item_description=models.TextField(max_length=1000, default=' ')
-   
+   image = models.ImageField(upload_to='menu_items/', null=True, blank=True)
+  
    def __str__(self):
       return self.name

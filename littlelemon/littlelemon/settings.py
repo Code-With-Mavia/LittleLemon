@@ -86,8 +86,19 @@ DATABASES = {
         'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '3306',
+    },
+    'reservations': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'reservations',
+        'USER': 'admindjango',
+        'PASSWORD': 'employee@123!',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+
+# For multiple databases 
+DATABASE_ROUTERS = ['littlelemon.routers.ReservationRouter']
 
 
 # Password validation
@@ -151,3 +162,5 @@ INTERNAL_IPS = [
     '127.0.0.1'
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
