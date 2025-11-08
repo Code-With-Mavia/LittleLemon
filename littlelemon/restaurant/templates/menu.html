@@ -19,13 +19,17 @@
 <!-- Pagination -->
 <div class="pagination">
     {% if menu_items.has_previous %}
-        <a href="?page={{ menu_items.previous_page_number }}">&laquo; Previous</a>
+        <a href="?page={{ menu_items.previous_page_number }}" class="prev">&laquo; Previous</a>
+    {% else %}
+        <span class="disabled prev">&laquo; Previous</span>
     {% endif %}
 
-    <span>Page {{ menu_items.number }} of {{ menu_items.paginator.num_pages }}</span>
+    <span class="page-info">Page {{ menu_items.number }} of {{ menu_items.paginator.num_pages }}</span>
 
     {% if menu_items.has_next %}
-        <a href="?page={{ menu_items.next_page_number }}">Next &raquo;</a>
+        <a href="?page={{ menu_items.next_page_number }}" class="next">Next &raquo;</a>
+    {% else %}
+        <span class="disabled next">Next &raquo;</span>
     {% endif %}
 </div>
 

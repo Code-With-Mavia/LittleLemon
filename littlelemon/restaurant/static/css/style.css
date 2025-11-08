@@ -44,7 +44,7 @@ header img {
     height: auto;
 }
 
-/* ===== UPDATED MENU STYLING ===== */
+/* ===== NAV ===== */
 nav {
     background-color: #495E57;
     margin-top: 1rem;
@@ -94,6 +94,7 @@ nav ul a:active {
 }
 /* ===== END NAV ===== */
 
+/* ===== SECTION & LAYOUT ===== */
 section {
     display: flex;
     gap: 2rem 1rem;
@@ -124,48 +125,53 @@ figure {
     margin: 0;
 }
 
-/* ===== MENU ITEMS STYLING ===== */
-.menu-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.menu-item {
-    background-color: #F8F9FA;
-    border: 1px solid #E0E0E0;
-    border-radius: 12px;
+/* ===== MENU ITEMS ===== */
+/* ===== MENU ITEM PAGE ===== */
+.menu-item-detail {
+    max-width: 1000px;
+    margin: 2rem auto;
     padding: 1.5rem;
+    background-color: #F8F9FA;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.menu-item-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.menu-item-image {
+    flex: 1 1 400px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
 }
 
-.menu-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 18px rgba(73, 94, 87, 0.2);
+.menu-item-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.menu-item img {
-    width: 100%;
-    border-radius: 10px;
+.menu-item-info {
+    flex: 1 1 400px;
+}
+
+.menu-item-info h1 {
+    font-size: 2.5rem;
+    color: #495E57;
     margin-bottom: 1rem;
 }
 
-.menu-item h3 {
-    color: #495E57;
-    font-size: 1.75rem;
-    margin-bottom: 0.5rem;
-}
-
-.menu-item p {
+.menu-item-info p {
+    font-size: 1.2rem;
     color: #555;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
-.menu-price {
+.menu-item-info .menu-price {
     font-weight: bold;
     color: #333;
     background-color: #B5D99C;
@@ -174,9 +180,52 @@ figure {
     border-radius: 6px;
     font-size: 1rem;
 }
-/* ===== END MENU ===== */
 
-/* ===== UPDATED CONTACT FORM STYLING ===== */
+
+/* ===== PAGINATION STYLING ===== */
+.pagination {
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.pagination a,
+.pagination span {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    color: #495E57;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background-color: #F8F9FA;
+}
+
+.pagination a:hover {
+    background-color: #B5D99C;
+    color: #333;
+    border-color: #B5D99C;
+}
+
+.pagination .disabled {
+    color: #aaa;
+    border-color: #eee;
+    cursor: default;
+}
+
+.pagination .page-info {
+    font-weight: bold;
+    color: #495E57;
+}
+
+
+
+/* ===== CONTACT FORM ===== */
 form {
     background-color: #F8F9FA;
     border: 1px solid #E0E0E0;
@@ -235,10 +284,10 @@ input:focus, textarea:focus, select:focus {
     color: #333;
     transform: translateY(-2px);
 }
-/* ===== END CONTACT FORM ===== */
 
+/* ===== HERO ===== */
 #hero {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('../img/restaurant_inside.jpg');
+    background-image: linear-gradient(0deg, rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('../img/restaurant_inside.jpg');
     background-size: cover;
     background-position: 75%;
     color: white;
@@ -276,6 +325,7 @@ input:focus, textarea:focus, select:focus {
     text-shadow: 1px 1px 4px #333333;
 }
 
+/* ===== FOOTER ===== */
 footer {
     background-color: #EDEFEE;
     padding: 1rem;
@@ -352,5 +402,14 @@ footer p {
     nav ul a {
         display: block;
         width: 100%;
+    }
+
+    .menu-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .menu-item img {
+        height: auto;
     }
 }

@@ -79,12 +79,15 @@ def bookings(request):
 # Menu views
 # ------------------------
 def menu(request):
-    menu_items = Menu.objects.all()  # fetch all menu items
-    return render(request, 'menu.html', {"menu_items": menu_items})
+    menu_list = Menu.objects.all()  # default DB
+    paginator = Paginator(menu_list, 6)  # 6 items per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'menu.html', {"menu_items": page_obj})
 
 def display_menu_item(request, pk):
-    menu_item = get_object_or_404(Menu, pk=pk)
-    paginator = Paginator(menu_item, 6)  # 6 items per page
-    paginator = request.GET.get('page')
-    menu_item = paginator.get_page(paginator)
+    try:
+        menu_item = Menu.objects.get(pk=pk)
+    except Menu.DoesNotExist:
+        menu_item = None
     return render(request, 'menu_item.html', {"menu_item": menu_item})

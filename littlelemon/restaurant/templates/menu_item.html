@@ -2,15 +2,20 @@
 {% load static %}
 {% block content %}
 
-<section>
-<article>
-<h1>{{ menu_item.name }}</h1>
-<p>{{ menu_item.menu_item_description }}</p>
-<p>Price: ${{ menu_item.price }}.00</p>
-
-<img src="{% static 'img/menu_items/' %}{{ menu_item.name }}.jpg" alt="{{ menu_item.name }}">
-
-</article>
+<section class="menu-item-detail">
+    <article>
+        <div class="menu-item-wrapper">
+            <div class="menu-item-image">
+                <img src="{% static 'img/menu_items/' %}{{ menu_item.name }}.jpg" alt="{{ menu_item.name }}">
+            </div>
+            <div class="menu-item-info">
+                <h1>{{ menu_item.name }}</h1>
+                <p>{{ menu_item.menu_item_description }}</p>
+                <p class="menu-price">Price: ${{ menu_item.price }}.00</p>
+                <p><a href="{% url 'menu' %}">Back to Menu</a></p>
+            </div>
+        </div>
+    </article>
 </section>
 
 {% endblock %}
