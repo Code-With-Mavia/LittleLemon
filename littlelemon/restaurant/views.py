@@ -79,11 +79,17 @@ def bookings(request):
 # Menu views
 # ------------------------
 def menu(request):
-    menu_list = Menu.objects.all()  # default DB
-    paginator = Paginator(menu_list, 6)  # 6 items per page
+    search_query = request.GET.get('search', '')
+    if search_query:
+        menu_list = Menu.objects.filter(name__icontains=search_query)
+    else:
+        menu_list = Menu.objects.all()
+    
+    paginator = Paginator(menu_list, 6)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'menu.html', {"menu_items": page_obj})
+    return render(request, 'menu.html', {"menu_items": page_obj, "search_query": search_query})
+
 
 def display_menu_item(request, pk):
     try:

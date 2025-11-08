@@ -6,14 +6,17 @@
   <article>
     <h1>Make a reservation</h1>
     <div class="row">
+      <!-- Booking Form -->
       <div class="column booking-form">
         <form id="booking-form">
           {% csrf_token %}
           {{ form.as_p }}
           <input type="submit" id="booking-button" value="Book Now">
+          <p id="booking-message" style="text-align:center; font-weight:bold; margin-top:1rem;"></p>
         </form>
       </div>
 
+      <!-- Map -->
       <div class="column">
         <div class="videowrap">
           <iframe
@@ -27,45 +30,40 @@
 </section>
 
 <script>
-  console.log("Hello"); // Debugging line
-
-  // Select date input
   const reservationDateInput = document.getElementById("id_reservation_date");
   reservationDateInput.type = "date";
 
-  // Add change listener to update bookings dynamically
-  reservationDateInput.addEventListener("change", () => {
-    getBookings(reservationDateInput.value);
-  });
+  // Preselect current date
+  const today = new Date().toISOString().split('T')[0];
+  reservationDateInput.value = today;
+
+  const bookingMessage = document.getElementById("booking-message");
 
   async function getBookings(date) {
     const response = await fetch(`/bookings/?date=${date}`);
     const data = await response.json();
-    console.log(data);
 
-    // Example: handle reserved slots (part of assessment instructions)
-    const reserved_slots = [];
-    data.forEach(item => {
-      console.log(item.fields);
-      reserved_slots.push(item.fields.reservation_slot);
-    });
+    const reservedSlots = data.map(item => item.fields.reservation_slot);
 
-    // Update time slots dynamically (example for 10–19)
-    let slot_options = '<option value="0" disabled>Select time</option>';
+    let slotOptions = '<option value="" disabled>Select time</option>';
     for (let i = 10; i < 20; i++) {
-      const label = `${i}:00`; // simple formatTime replacement
-      if (reserved_slots.includes(i)) {
-        slot_options += `<option value=${i} disabled>${label}</option>`;
-      } else {
-        slot_options += `<option value=${i}>${label}</option>`;
-      }
+      const label = `${i}:00`;
+      slotOptions += reservedSlots.includes(i)
+        ? `<option value="${i}" disabled>${label} (Booked)</option>`
+        : `<option value="${i}">${label}</option>`;
     }
 
     const timeSelect = document.getElementById("id_reservation_slot");
-    if (timeSelect) timeSelect.innerHTML = slot_options;
+    if (timeSelect) timeSelect.innerHTML = slotOptions;
+
+    // Show message if no bookings exist
+    bookingMessage.innerText = reservedSlots.length === 0 ? "No bookings for this date" : "";
   }
 
-  // Handle form submission via fetch
+  reservationDateInput.addEventListener("change", () => {
+    getBookings(reservationDateInput.value);
+  });
+
   const bookingForm = document.getElementById("booking-form");
   bookingForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -74,31 +72,35 @@
     const formData = {
       first_name: document.getElementById("id_first_name").value,
       last_name: document.getElementById("id_last_name").value,
-      guest_number: document.getElementById("id_guest_number").value,
+      guest_number: parseInt(document.getElementById("id_guest_number").value),
       comment: document.getElementById("id_comment").value,
-      reservation_date: document.getElementById("id_reservation_date").value,
-      reservation_slot: parseInt(document.getElementById("id_reservation_slot").value),
+      reservation_date: reservationDateInput.value,
+      reservation_slot: parseInt(document.getElementById("id_reservation_slot").value)
     };
 
     const res = await fetch("/bookings/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-CSRFToken": csrfToken,
+        "X-CSRFToken": csrfToken
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(formData)
     });
 
     const result = await res.json();
     if (result.error) {
-      alert("This slot is already booked.");
+      bookingMessage.innerText = "This slot is already booked.";
+      bookingMessage.style.color = "red";
     } else {
-      alert("Reservation successful!");
+      bookingMessage.innerText = "Reservation successful!";
+      bookingMessage.style.color = "green";
       getBookings(formData.reservation_date);
+      bookingForm.reset();
+      reservationDateInput.value = today;
     }
   });
 
-  // Initialize bookings for today
-  getBookings(reservationDateInput.value);
+  // Initialize slots for today
+  getBookings(today);
 </script>
 {% endblock %}

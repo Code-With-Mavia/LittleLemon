@@ -3,7 +3,10 @@
 {% block content %}
 
 <h1>Our Menu</h1>
-
+<form method="get" action="" class="menu-search-form">
+    <input type="text" name="search" placeholder="Search menu..." value="{{ search_query }}">
+    <button type="submit">Search</button>
+</form>
 <div class="menu-container">
     {% for item in menu_items %}
     <div class="menu-item">
