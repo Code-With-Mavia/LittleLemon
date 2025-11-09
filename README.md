@@ -1,15 +1,16 @@
 # 🍋 LittleLemon — Restaurant Web App
 
-![Stars](https://img.shields.io/github/stars/Code-With-Mavia/LittleLemon?color=gold&style=flat-square)
-![Forks](https://img.shields.io/github/forks/Code-With-Mavia/LittleLemon?color=teal&style=flat-square)
-![Issues](https://img.shields.io/github/issues/Code-With-Mavia/LittleLemon?color=red&style=flat-square)
-![Repo Size](https://img.shields.io/github/repo-size/Code-With-Mavia/LittleLemon?color=blueviolet&style=flat-square)
-![Last Commit](https://img.shields.io/github/last-commit/Code-With-Mavia/LittleLemon?color=brightgreen&style=flat-square)
-![Contributors](https://img.shields.io/github/contributors/Code-With-Mavia/LittleLemon?color=orange&style=flat-square)
-![Languages](https://img.shields.io/github/languages/count/Code-With-Mavia/LittleLemon?color=blue&style=flat-square)
-![License](https://img.shields.io/github/license/Code-With-Mavia/LittleLemon?color=yellow&style=flat-square)
-[![Live Demo](https://img.shields.io/badge/🚀-Live%20Demo-blueviolet?style=flat-square)](https://portfolio-taupe-one-51.vercel.app/)
-![CI/CD](https://img.shields.io/badge/CI%2FCD-Pending-lightgrey?style=flat-square)
+![Stars](https://img.shields.io/github/stars/Code-With-Mavia/LittleLemon?style=plastic&logo=github&logoColor=white&color=FFD700)
+![Forks](https://img.shields.io/github/forks/Code-With-Mavia/LittleLemon?style=plastic&logo=github&logoColor=white&color=00C9A7)
+![Issues](https://img.shields.io/github/issues/Code-With-Mavia/LittleLemon?style=plastic&logo=gitbook&logoColor=white&color=FF4B4B)
+![Repo Size](https://img.shields.io/github/repo-size/Code-With-Mavia/LittleLemon?style=plastic&logo=dropbox&logoColor=white&color=9D4EDD)
+![Last Commit](https://img.shields.io/github/last-commit/Code-With-Mavia/LittleLemon?style=plastic&logo=git&logoColor=white&color=00C851)
+![Contributors](https://img.shields.io/github/contributors/Code-With-Mavia/LittleLemon?style=plastic&logo=users&logoColor=white&color=FFB300)
+![Languages](https://img.shields.io/github/languages/count/Code-With-Mavia/LittleLemon?style=plastic&logo=codefactor&logoColor=white&color=4285F4)
+![License](https://img.shields.io/github/license/Code-With-Mavia/LittleLemon?style=plastic&logo=open-source-initiative&logoColor=white&color=FFD43B)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-🚀-8A2BE2?style=plastic)](https://portfolio-taupe-one-51.vercel.app/)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-Active-808080?style=plastic&logo=githubactions&logoColor=white)
+
 
 > A **full-stack Django web application** for a modern restaurant — featuring menu management, booking system, and REST API endpoints.  
 > Built as part of the **Meta Backend Development Specialization**.
