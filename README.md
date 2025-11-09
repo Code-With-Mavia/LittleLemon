@@ -87,44 +87,37 @@ littlelemon/
    ```bash
    git clone https://github.com/Code-With-Mavia/LittleLemon.git
    cd LittleLemon
-````
-````
+
 2. **Install dependencies**
 
    ```bash
    pipenv install
    pipenv shell
    ```
-````
-````
+
 3. **Apply migrations**
 
    ```bash
    python manage.py migrate
    ```
-````
-````
+   
 4. **Create superuser**
 
    ```bash
    python manage.py createsuperuser
    ```
-````
-````
+   
 5. **Run the server**
 
    ```bash
    python manage.py runserver
    ```
-````
-````
+   
 6. **Visit**
 
    ```
    http://127.0.0.1:8000/
    ```
-````
-````
 ---
 
 ## 🔗 API Endpoints
