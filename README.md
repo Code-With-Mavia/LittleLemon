@@ -1,15 +1,15 @@
 # 🍋 LittleLemon - Restaurant Web App
 
-![GitHub stars](https://img.shields.io/github/stars/Code-With-Mavia/LittleLemon?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/Code-With-Mavia/LittleLemon?style=for-the-badge)
-![GitHub issues](https://img.shields.io/github/issues/Code-With-Mavia/LittleLemon?style=for-the-badge)
-![GitHub repo size](https://img.shields.io/github/repo-size/Code-With-Mavia/LittleLemon?style=for-the-badge)
-![GitHub last commit](https://img.shields.io/github/last-commit/Code-With-Mavia/LittleLemon?style=for-the-badge)
-![GitHub contributors](https://img.shields.io/github/contributors/Code-With-Mavia/LittleLemon?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/Code-With-Mavia/LittleLemon?style=for-the-badge)
-![License](https://img.shields.io/github/license/Code-With-Mavia/LittleLemon?style=for-the-badge)
-[![Live Demo](https://img.shields.io/badge/Live-Demo-orange?style=for-the-badge)](https://portfolio-taupe-one-51.vercel.app/)
-![CI/CD](https://img.shields.io/badge/CI/CD-pending-lightgrey?style=for-the-badge)
+![Stars](https://img.shields.io/github/stars/Code-With-Mavia/LittleLemon?color=gold&style=flat-square)
+![Forks](https://img.shields.io/github/forks/Code-With-Mavia/LittleLemon?color=teal&style=flat-square)
+![Issues](https://img.shields.io/github/issues/Code-With-Mavia/LittleLemon?color=red&style=flat-square)
+![Repo Size](https://img.shields.io/github/repo-size/Code-With-Mavia/LittleLemon?color=blueviolet&style=flat-square)
+![Last Commit](https://img.shields.io/github/last-commit/Code-With-Mavia/LittleLemon?color=brightgreen&style=flat-square)
+![Contributors](https://img.shields.io/github/contributors/Code-With-Mavia/LittleLemon?color=orange&style=flat-square)
+![Languages](https://img.shields.io/github/languages/count/Code-With-Mavia/LittleLemon?color=blue&style=flat-square)
+![License](https://img.shields.io/github/license/Code-With-Mavia/LittleLemon?color=yellow&style=flat-square)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-%F0%9F%9A%80-blueviolet?style=flat-square)](https://portfolio-taupe-one-51.vercel.app/)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-pending-lightgrey?style=flat-square)
 
 > A **full-stack Django restaurant web app** featuring menu management, booking system, and a REST API. Developed as part of the **Meta Backend Development Specialization**.
 
