@@ -88,7 +88,6 @@ littlelemon/
    ```bash
    git clone https://github.com/Code-With-Mavia/LittleLemon.git
    cd LittleLemon
-````
 
 2. **Install dependencies**
 
