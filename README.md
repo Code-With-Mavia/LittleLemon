@@ -11,7 +11,6 @@
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-🚀-8A2BE2?style=plastic)](https://portfolio-taupe-one-51.vercel.app/)
 ![CI/CD](https://img.shields.io/badge/CI%2FCD-Active-808080?style=plastic&logo=githubactions&logoColor=white)
 
-
 > A **full-stack Django web application** for a modern restaurant — featuring menu management, booking system, and REST API endpoints.  
 > Built as part of the **Meta Backend Development Specialization**.
 
@@ -35,13 +34,13 @@
 
 ## 🚀 Features
 
-- 🍽️ **Menu Management** — Browse and manage restaurant items.  
-- 📅 **Customer Bookings** — Integrated table reservation system.  
-- 🔌 **REST API** — Full-featured API for menu and ratings (`littlelemonAPI`).  
-- 🛠️ **Admin Dashboard** — Manage dishes, bookings, and user data.  
-- 📱 **Responsive Design** — Clean UI optimized for all screens.  
-- 💾 **SQLite Database** — Lightweight and reliable data storage.  
-- 🧩 **Modular Django Structure** — Scalable, maintainable project setup.
+- 🍽️ **Menu Management** — Browse, filter, and view restaurant items.  
+- 📅 **Customer Bookings** — Table reservation system with date and slot selection.  
+- 🔌 **REST API** — Full-featured API for menu items and ratings (`littlelemonAPI`).  
+- 🛠️ **Admin Dashboard** — Manage dishes, bookings, and user accounts.  
+- 📱 **Responsive Design** — Optimized layout for mobile, tablet, and desktop.  
+- 💾 **MySQL Database** — Stores user, menu, and booking data across multiple databases.  
+- 🧩 **Modular Django Structure** — Scalable and maintainable architecture for future enhancements.
 
 ---
 
@@ -58,7 +57,7 @@
 - Django Templates  
 
 **Database & Tools**
-- ![SQLite](https://img.shields.io/badge/SQLite-3-yellow?logo=sqlite&logoColor=white)  
+- ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)  
 - Git & GitHub  
 - VS Code  
 - Pipenv  
@@ -74,7 +73,8 @@ littlelemon/
 ├── littlelemon/          # Django project configuration
 ├── littlelemonAPI/       # API app (serializers, views, urls)
 ├── restaurant/           # Main app (models, templates, static)
-├── db.sqlite3            # Database
+├── users/                # User authentication app
+├── db.sqlite3            # Default database (or MySQL configured)
 ├── Pipfile / Pipfile.lock
 └── manage.py
 
@@ -88,6 +88,7 @@ littlelemon/
    ```bash
    git clone https://github.com/Code-With-Mavia/LittleLemon.git
    cd LittleLemon
+````
 
 2. **Install dependencies**
 
@@ -96,41 +97,47 @@ littlelemon/
    pipenv shell
    ```
 
-3. **Apply migrations**
+3. **Configure databases**
+
+   * Update `settings.py` with your MySQL credentials for `default` and `reservations`.
+
+4. **Apply migrations**
 
    ```bash
    python manage.py migrate
    ```
-   
-4. **Create superuser**
+
+5. **Create superuser**
 
    ```bash
    python manage.py createsuperuser
    ```
-   
-5. **Run the server**
+
+6. **Run the development server**
 
    ```bash
    python manage.py runserver
    ```
-   
-6. **Visit**
+
+7. **Access the app**
 
    ```
    http://127.0.0.1:8000/
    ```
+
 ---
 
 ## 🔗 API Endpoints
 
-| Endpoint             | Method | Description                 | Example                                     |
-| -------------------- | ------ | --------------------------- | ------------------------------------------- |
-| `/api/menu/`         | GET    | List all menu items         | `curl http://127.0.0.1:8000/api/menu/`      |
-| `/api/menu/<id>/`    | GET    | Retrieve a single menu item | `curl http://127.0.0.1:8000/api/menu/1/`    |
-| `/api/ratings/`      | GET    | List all ratings            | `curl http://127.0.0.1:8000/api/ratings/`   |
-| `/api/ratings/<id>/` | GET    | Retrieve a rating by ID     | `curl http://127.0.0.1:8000/api/ratings/1/` |
+| Endpoint                | Method | Description                 | Example                                                                                            |
+| ----------------------- | ------ | --------------------------- | -------------------------------------------------------------------------------------------------- |
+| `/api/menu/`            | GET    | List all menu items         | `curl http://127.0.0.1:8000/api/menu/`                                                             |
+| `/api/menu/<id>/`       | GET    | Retrieve a single menu item | `curl http://127.0.0.1:8000/api/menu/1/`                                                           |
+| `/api/ratings/`         | GET    | List all ratings            | `curl http://127.0.0.1:8000/api/ratings/`                                                          |
+| `/api/ratings/<id>/`    | GET    | Retrieve a rating by ID     | `curl http://127.0.0.1:8000/api/ratings/1/`                                                        |
+| `/restaurant/bookings/` | POST   | Create a new booking        | JSON payload: `{"first_name":"John", "reservation_date":"2025-11-15", "reservation_slot":"18:00"}` |
 
-> 💡 Explore endpoints via Django REST Framework’s browsable API.
+> 💡 Use the Django REST Framework browsable API or Insomnia/Postman to interact with endpoints.
 
 ---
 
@@ -144,11 +151,11 @@ littlelemon/
 
 ## 🔮 Future Enhancements
 
-* 🔐 Add user authentication & profiles
-* 🗄️ Move to PostgreSQL / MySQL
+* 🔐 Add user profiles and roles
+* 🗄️ Support full MySQL deployment across multiple environments
 * 📸 Enable image uploads for menu items
-* 🧪 Implement automated API tests
-* 🐳 Add Docker setup
+* 🧪 Implement automated API and unit tests
+* 🐳 Dockerize the application
 * 🌍 Deploy a production-ready live demo
 
 ---
@@ -176,8 +183,7 @@ See the [LICENSE](LICENSE) file for details.
 
 ## 👨‍💻 Author
 
-**Maawiah Qaiser**
-*Aspiring Backend Engineer*
+**Maawiah Qaiser** — *Aspiring Backend Engineer*
 
 * GitHub: [Code-With-Mavia](https://github.com/Code-With-Mavia)
 * LinkedIn: [maawiah-qaiser](https://www.linkedin.com/in/maawiah-qaiser-10793722b/)
@@ -188,7 +194,8 @@ See the [LICENSE](LICENSE) file for details.
 ## 🙌 Acknowledgments
 
 * Meta Backend Development Specialization (Coursera)
-* Inspired by modern restaurant web apps
-* Contributions & suggestions are always welcome! 💡
+* Inspired by modern restaurant web applications
+* Contributions, suggestions, and feedback are welcome 💡
 
----
+```
+```
