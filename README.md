@@ -23,7 +23,6 @@
 - [Project Structure](#-project-structure)
 - [Installation](#-installation)
 - [API Endpoints](#-api-endpoints)
-- [Screenshots](#-screenshots)
 - [Future Enhancements](#-future-enhancements)
 - [License](#-license)
 - [Contact](#-contact)
@@ -40,7 +39,8 @@
 - 🛠️ **Admin Dashboard** — Manage dishes, bookings, and user accounts.  
 - 📱 **Responsive Design** — Optimized layout for mobile, tablet, and desktop.  
 - 💾 **MySQL Database** — Stores user, menu, and booking data across multiple databases.  
-- 🧩 **Modular Django Structure** — Scalable and maintainable architecture for future enhancements.
+- 🔐 **User Authentication & Profiles** — Signup, login, logout, password validation, and protected views.  
+- 🧩 **Modular Django Structure** — Scalable and maintainable architecture.
 
 ---
 
@@ -74,7 +74,7 @@ littlelemon/
 ├── littlelemonAPI/       # API app (serializers, views, urls)
 ├── restaurant/           # Main app (models, templates, static)
 ├── users/                # User authentication app
-├── db.sqlite3            # Default database (or MySQL configured)
+├── db.sqlite3 / MySQL    # Database (can be configured)
 ├── Pipfile / Pipfile.lock
 └── manage.py
 
@@ -99,7 +99,28 @@ littlelemon/
 
 3. **Configure databases**
 
-   * Update `settings.py` with your MySQL credentials for `default` and `reservations`.
+   * Update `littlelemon/settings.py` with your MySQL credentials:
+
+   ```python
+   DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.mysql',
+           'NAME': 'littlelemon',
+           'USER': 'root',
+           'PASSWORD': 'root',
+           'HOST': 'localhost',
+           'PORT': '3306',
+       },
+       'reservations': {
+           'ENGINE': 'django.db.backends.mysql',
+           'NAME': 'reservations',
+           'USER': 'admindjango',
+           'PASSWORD': 'employee@123!',
+           'HOST': 'localhost',
+           'PORT': '3306',
+       }
+   }
+   ```
 
 4. **Apply migrations**
 
@@ -137,25 +158,17 @@ littlelemon/
 | `/api/ratings/<id>/`    | GET    | Retrieve a rating by ID     | `curl http://127.0.0.1:8000/api/ratings/1/`                                                        |
 | `/restaurant/bookings/` | POST   | Create a new booking        | JSON payload: `{"first_name":"John", "reservation_date":"2025-11-15", "reservation_slot":"18:00"}` |
 
-> 💡 Use the Django REST Framework browsable API or Insomnia/Postman to interact with endpoints.
-
----
-
-## 🖼️ Screenshots
-
-![Home Page](https://via.placeholder.com/800x400.png?text=LittleLemon+Home+Page)
-![Menu Page](https://via.placeholder.com/800x400.png?text=Menu+Page)
-![Booking Page](https://via.placeholder.com/800x400.png?text=Booking+Page)
+> 💡 Use Django REST Framework browsable API or Insomnia/Postman to interact with endpoints.
 
 ---
 
 ## 🔮 Future Enhancements
 
-* 🔐 Add user profiles and roles
-* 🗄️ Support full MySQL deployment across multiple environments
-* 📸 Enable image uploads for menu items
-* 🧪 Implement automated API and unit tests
-* 🐳 Dockerize the application
+* 🔐 User profiles with roles and permissions
+* 🗄️ Full MySQL deployment across environments
+* 📸 Image uploads for menu items
+* 🧪 Automated API and unit tests
+* 🐳 Dockerized setup
 * 🌍 Deploy a production-ready live demo
 
 ---
@@ -175,12 +188,6 @@ See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 💼 Portfolio
-
-[![Portfolio](https://img.shields.io/badge/Visit-My%20Portfolio-blueviolet?style=flat-square)](https://portfolio-taupe-one-51.vercel.app/)
-
----
-
 ## 👨‍💻 Author
 
 **Maawiah Qaiser** — *Aspiring Backend Engineer*
@@ -196,6 +203,3 @@ See the [LICENSE](LICENSE) file for details.
 * Meta Backend Development Specialization (Coursera)
 * Inspired by modern restaurant web applications
 * Contributions, suggestions, and feedback are welcome 💡
-
-```
-```
