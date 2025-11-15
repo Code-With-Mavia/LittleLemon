@@ -1,3 +1,4 @@
+
 # 🍋 LittleLemon — Restaurant Web App
 
 ![Stars](https://img.shields.io/github/stars/Code-With-Mavia/LittleLemon?style=plastic&logo=github&logoColor=white&color=FFD700)
@@ -88,6 +89,7 @@ littlelemon/
    ```bash
    git clone https://github.com/Code-With-Mavia/LittleLemon.git
    cd LittleLemon
+````
 
 2. **Install dependencies**
 
