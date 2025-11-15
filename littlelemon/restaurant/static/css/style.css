@@ -1,9 +1,9 @@
+/* =========================================
+   GLOBAL STYLES
+========================================= */
 body {
     font-family: 'Karla', sans-serif;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin: 3rem 5%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -13,14 +13,13 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     font-size: 4rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0;
+    margin: 1.5rem 0 0 0;
 }
 
 h2 {
     font-size: 2.5rem;
-    color: #333333;
-    margin:1rem 0;
+    color: #333;
+    margin: 1rem 0;
 }
 
 p, ul {
@@ -36,40 +35,37 @@ a:hover {
     text-decoration: underline;
 }
 
+/* =========================================
+   HEADER
+========================================= */
 header img {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     max-width: 100%;
     height: auto;
 }
 
-/* ===== NAV ===== */
+/* =========================================
+   NAVIGATION
+========================================= */
 nav {
     background-color: #495E57;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
     border-radius: 12px;
-    padding: 1rem 0; 
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 nav ul {
     list-style: none;
     font-size: 1.5rem;
     text-align: center;
-    padding-inline-start: 0;
+    padding: 0;
     margin: 0;
     display: flex;
     justify-content: center;
     gap: 2.5rem;
     flex-wrap: wrap;
-}
-
-nav ul li {
-    display: inline-block;
-    position: relative;
-    transition: transform 0.2s ease;
 }
 
 nav ul li:hover {
@@ -85,21 +81,16 @@ nav ul a {
 
 nav ul a:hover {
     background-color: #B5D99C;
-    color: #333333;
-    text-decoration: none;
+    color: #333;
 }
 
-nav ul a:active {
-    transform: scale(0.97);
-}
-/* ===== END NAV ===== */
-
-/* ===== SECTION & LAYOUT ===== */
+/* =========================================
+   SECTIONS & ARTICLES
+========================================= */
 section {
     display: flex;
     gap: 2rem 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
     flex-direction: row;
 }
 
@@ -109,24 +100,88 @@ article {
 
 article img {
     max-width: 100%;
-}
-
-article ul {
-    list-style: none;
+    height: auto;
 }
 
 main article {
     border: 1px solid #EDEFEE;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 0 1rem;
 }
 
-figure {
-    margin: 0;
+/* =========================================
+   MENU PAGE GRID & CARDS
+========================================= */
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
 }
 
-/* ===== MENU ITEMS ===== */
-/* ===== MENU ITEM PAGE ===== */
+.menu-item {
+    width: 250px !important;
+    height: 350px !important;
+    flex-shrink: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.menu-item img {
+    width: 100% !important;      /* fill card width */
+    max-width: 250px !important;
+    height: 150px !important;    /* fixed image height */
+    max-height: 150px !important;
+    object-fit: cover !important;
+    display: block !important;
+    margin: 0 auto 10px;
+    border-radius: 5px;
+    flex-shrink: 0 !important;
+}
+
+.menu-item h3 {
+    margin: 5px 0;
+    font-size: 1.1em;
+    line-height: 1.2em;
+}
+
+.menu-item p {
+    font-size: 0.9em;
+    color: #555;
+    margin: 5px 0;
+    flex-grow: 1;
+}
+
+.menu-price {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: #007BFF;
+    font-size: 0.9em;
+}
+
+.menu-item a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   MENU ITEM DETAIL PAGE
+========================================= */
 .menu-item-detail {
     max-width: 1000px;
     margin: 2rem auto;
@@ -139,36 +194,38 @@ figure {
 .menu-item-wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 1.5rem;
     align-items: flex-start;
 }
 
 .menu-item-image {
-    flex: 1 1 400px;
+    flex: 1 1 250px;
     text-align: center;
 }
 
 .menu-item-image img {
-    max-width: 100%;
+    width: 100%;
+    max-height: 350px;
     height: auto;
     border-radius: 12px;
+    object-fit: cover;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .menu-item-info {
-    flex: 1 1 400px;
+    flex: 1 1 250px;
 }
 
 .menu-item-info h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #495E57;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .menu-item-info p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #555;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .menu-item-info .menu-price {
@@ -178,46 +235,19 @@ figure {
     display: inline-block;
     padding: 0.25rem 0.75rem;
     border-radius: 6px;
-    font-size: 1rem;
-}
- .menu-search-form {
-    text-align: center;
-    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
 }
 
-.menu-search-form input {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    width: 250px;
-}
-
-.menu-search-form button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: none;
-    background-color: #495E57;
-    color: #fff;
-    cursor: pointer;
-    margin-left: 0.5rem;
-}
-
-.menu-search-form button:hover {
-    background-color: #B5D99C;
-    color: #333;
-}
-
-
-/* ===== PAGINATION STYLING ===== */
+/* =========================================
+   PAGINATION
+========================================= */
 .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2rem 0;
     gap: 1rem;
     font-size: 1rem;
+    margin: 20px 0;
 }
 
 .pagination a, .pagination span {
@@ -232,18 +262,40 @@ figure {
 .pagination a:hover {
     background-color: #B5D99C;
     color: #333;
-    border-color: #495E57;
 }
 
-.pagination .disabled {
-    color: #aaa;
-    cursor: not-allowed;
-    border-color: #eee;
+/* =========================================
+   SEARCH FORM
+========================================= */
+.menu-search-form {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
+.menu-search-form input {
+    padding: 8px 12px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
 
+.menu-search-form button {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
 
-/* ===== CONTACT FORM ===== */
+.menu-search-form button:hover {
+    background-color: #B5D99C;
+    color: #333;
+}
+
+/* =========================================
+   CONTACT FORM
+========================================= */
 form {
     background-color: #F8F9FA;
     border: 1px solid #E0E0E0;
@@ -251,7 +303,7 @@ form {
     padding: 2rem;
     max-width: 600px;
     margin: 2rem auto;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
 }
 
 label {
@@ -278,11 +330,10 @@ input, textarea, select {
 input:focus, textarea:focus, select:focus {
     outline: none;
     border-color: #495E57;
-    box-shadow: 0 0 5px rgba(73, 94, 87, 0.3);
+    box-shadow: 0 0 5px rgba(73,94,87,0.3);
 }
 
-#button, 
-#contact-button {
+#button, #contact-button {
     padding: 0.75rem 1rem;
     border: none;
     background-color: #495E57;
@@ -296,14 +347,15 @@ input:focus, textarea:focus, select:focus {
     transition: all 0.3s ease;
 }
 
-#button:hover, 
-#contact-button:hover {
+#button:hover, #contact-button:hover {
     background-color: #B5D99C;
     color: #333;
     transform: translateY(-2px);
 }
 
-/* ===== HERO ===== */
+/* =========================================
+   HERO SECTION
+========================================= */
 #hero {
     background-image: linear-gradient(0deg, rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('../img/restaurant_inside.jpg');
     background-size: cover;
@@ -316,34 +368,31 @@ input:focus, textarea:focus, select:focus {
 #hero p {
     font-size: 2rem;
     margin: 0;
-    text-shadow: 2px 2px 4px #333333;
+    text-shadow: 2px 2px 4px #333;
 }
 
 .cta { 
-    display: inline-block; 
-    color: rgba(255, 255, 255, 0.9);
-    width: 200px; 
-    font-weight: bold; 
+    display: inline-block;
+    color: rgba(255,255,255,0.9);
+    width: 200px;
+    font-weight: bold;
     font-size: 1.5rem;
-    padding: 8px; 
-    border: 3px solid #fff; 
-    text-align: center; 
-    outline: none; 
-    text-decoration: none; 
+    padding: 8px;
+    border: 3px solid #fff;
+    text-align: center;
+    text-decoration: none;
     margin: 1rem;
-} 
+}
 
 .cta:hover {
     color: #fff;
-    background: #495E57;
-    border: 3px solid #495E57; 
+    background-color: #495E57;
+    border: 3px solid #495E57;
 }
 
-.heading-shadow {
-    text-shadow: 1px 1px 4px #333333;
-}
-
-/* ===== FOOTER ===== */
+/* =========================================
+   FOOTER
+========================================= */
 footer {
     background-color: #EDEFEE;
     padding: 1rem;
@@ -356,9 +405,7 @@ footer img {
 }
 
 footer p {
-    border-top: #333333;
-    border-style: solid;
-    border-width: 0.1rem;
+    border-top: 0.1rem solid #333;
     border-bottom: none;
     border-left: none;
     border-right: none;
@@ -366,38 +413,9 @@ footer p {
     padding-top: 1rem;
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    padding-bottom: 1rem;
-}
-
-.column {
-    flex-basis: 50%;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-}
-
-.column figure {
-    padding: 0px 12px;
-}
-
-.videowrap {
-	position: relative;
-	padding-bottom: 56.25%;
-	padding-top: 1rem;
-	height: 0;
-}
-.videowrap iframe {
-	position: absolute;
-    margin-top: 2rem;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-
+/* =========================================
+   MEDIA QUERIES
+========================================= */
 @media (max-width: 800px) {
     section {
         flex-direction: column;   
@@ -421,13 +439,20 @@ footer p {
         display: block;
         width: 100%;
     }
+}
 
-    .menu-container {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+@media (max-width: 600px) {
+    .menu-item {
+        width: 90% !important;
+        max-width: 90% !important;
     }
 
     .menu-item img {
-        height: auto;
+        width: 100% !important;
+        height: 120px !important;
+    }
+
+    .menu-search-form input {
+        width: 80%;
     }
 }

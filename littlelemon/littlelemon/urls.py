@@ -22,7 +22,9 @@ import debug_toolbar
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('restaurant.urls')),
-    path('api/',include('littlelemonAPI.urls'))
+    path('api/',include('littlelemonAPI.urls')),
+    # littlelemon/urls.py
+    path('users/', include('users.urls')),
 
 ]
 if settings.DEBUG:

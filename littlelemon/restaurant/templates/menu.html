@@ -3,23 +3,24 @@
 {% block content %}
 
 <h1>Our Menu</h1>
+
 <form method="get" action="" class="menu-search-form">
     <input type="text" name="search" placeholder="Search menu..." value="{{ search_query }}">
     <button type="submit">Search</button>
 </form>
+
 <div class="menu-container">
     {% for item in menu_items %}
     <div class="menu-item">
-        <img src="{% static 'img/menu_items/' %}{{ item.name }}.jpg" alt="{{ item.name }}">
+        <img src="{{ item.image.url }}" alt="{{ item.name }}">
         <h3>{{ item.name }}</h3>
-        <p>{{ item.menu_item_description }}</p>
-        <span class="menu-price">${{ item.price }}.00</span>
+        <p>{{ item.menu_item_description|truncatewords:15 }}</p>
+        <span class="menu-price">${{ item.price }}</span>
         <p><a href="{% url 'menu_item' pk=item.pk %}">View Details</a></p>
     </div>
     {% endfor %}
 </div>
 
-<!-- Pagination -->
 <div class="pagination">
     {% if menu_items.has_previous %}
         <a href="?page={{ menu_items.previous_page_number }}" class="prev">&laquo; Previous</a>
@@ -27,7 +28,9 @@
         <span class="disabled prev">&laquo; Previous</span>
     {% endif %}
 
-    <span class="page-info">Page {{ menu_items.number }} of {{ menu_items.paginator.num_pages }}</span>
+    <span class="page-info">
+        Page {{ menu_items.number }} of {{ menu_items.paginator.num_pages }}
+    </span>
 
     {% if menu_items.has_next %}
         <a href="?page={{ menu_items.next_page_number }}" class="next">Next &raquo;</a>
