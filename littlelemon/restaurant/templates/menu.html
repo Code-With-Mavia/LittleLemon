@@ -12,7 +12,8 @@
 <div class="menu-container">
     {% for item in menu_items %}
     <div class="menu-item">
-        <img src="{{ item.image.url }}" alt="{{ item.name }}">
+        {% comment %} Use static image based on item name {% endcomment %}
+        <img src="{% static 'img/menu_items/' %}{{ item.name }}.jpg" alt="{{ item.name }}">
         <h3>{{ item.name }}</h3>
         <p>{{ item.menu_item_description|truncatewords:15 }}</p>
         <span class="menu-price">${{ item.price }}</span>

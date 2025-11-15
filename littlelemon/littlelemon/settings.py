@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-u^%gf91v68*3f=aj3lj$=q^)o)8#_s6u*u%%3cm%1b9%uz58d0
 DEBUG = True
 
 ALLOWED_HOSTS = []
+LOGIN_URL = '/users/login/'
+LOGIN_REDIRECT_URL = '/'  # After login, redirect here
 
 
 # Application definition
@@ -138,7 +140,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'restaurant/static'), # <--- Check this path carefully!
+    os.path.join(BASE_DIR, 'restaurant/static'),
 ]
 
 REST_FRAMEWORK = {

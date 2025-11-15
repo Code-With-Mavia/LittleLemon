@@ -1,57 +1,44 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from .forms import BookingForm
+from .models import Booking, Menu
 from django.http import HttpResponse
 from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
-import json
 from django.core.paginator import Paginator
-from .forms import BookingForm
-from .models import Booking, Menu
+import json
 
-
-# ------------------------
-# Standard page views
-# ------------------------
+@login_required(login_url='/users/login/')
 def home(request):
     return render(request, 'index.html')
 
-
+@login_required(login_url='/users/login/')
 def about(request):
     return render(request, 'about.html')
 
-
+@login_required(login_url='/users/login/')
 def contact(request):
     return render(request, 'contact.html')
 
-
-# ------------------------
-# Booking form view
-# ------------------------
+@login_required
 def book(request):
     form = BookingForm()
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
-            # Save booking to reservations DB
             form.save(using='reservations')
     return render(request, 'book.html', {'form': form})
 
-
-# ------------------------
-# Bookings API view
-# ------------------------
 @csrf_exempt
+@login_required
 def bookings(request):
     if request.method == "POST":
-        # Load JSON data from request body
         data = json.loads(request.body)
-
-        # Check if the reservation slot is already taken
         exists = Booking.objects.using('reservations').filter(
             reservation_date=data['reservation_date'],
             reservation_slot=data['reservation_slot']
         ).exists()
-
         if not exists:
             booking = Booking(
                 first_name=data['first_name'],
@@ -63,34 +50,23 @@ def bookings(request):
             )
             booking.save(using='reservations')
         else:
-            return HttpResponse(
-                '{"error":1}',
-                content_type='application/json'
-            )
+            return HttpResponse('{"error":1}', content_type='application/json')
 
-    # Handle GET request: return bookings for a given date
     date = request.GET.get('date', str(datetime.today().date()))
     bookings_qs = Booking.objects.using('reservations').filter(reservation_date=date)
     booking_json = serializers.serialize('json', bookings_qs)
     return HttpResponse(booking_json, content_type='application/json')
 
-
-# ------------------------
-# Menu views
-# ------------------------
+@login_required
 def menu(request):
     search_query = request.GET.get('search', '')
-    if search_query:
-        menu_list = Menu.objects.filter(name__icontains=search_query)
-    else:
-        menu_list = Menu.objects.all()
-    
+    menu_list = Menu.objects.filter(name__icontains=search_query) if search_query else Menu.objects.all()
     paginator = Paginator(menu_list, 6)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'menu.html', {"menu_items": page_obj, "search_query": search_query})
 
-
+@login_required
 def display_menu_item(request, pk):
     try:
         menu_item = Menu.objects.get(pk=pk)
