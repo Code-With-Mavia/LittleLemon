@@ -86,19 +86,20 @@ littlelemon/
 ## ⚙️ Installation
 
 1. **Clone the repository**
-   ```bash
+   ```
    git clone https://github.com/Code-With-Mavia/LittleLemon.git
    cd LittleLemon
-````
+   ```
 
 2. **Install dependencies**
 
    ```bash
    pipenv install
    pipenv shell
-   ```
 
-3. **Configure databases**
+    ```
+
+4. **Configure databases**
 
    * Update `littlelemon/settings.py` with your MySQL credentials:
 
@@ -123,25 +124,25 @@ littlelemon/
    }
    ```
 
-4. **Apply migrations**
+5. **Apply migrations**
 
    ```bash
    python manage.py migrate
    ```
 
-5. **Create superuser**
+6. **Create superuser**
 
    ```bash
    python manage.py createsuperuser
    ```
 
-6. **Run the development server**
+7. **Run the development server**
 
    ```bash
    python manage.py runserver
    ```
 
-7. **Access the app**
+8. **Access the app**
 
    ```
    http://127.0.0.1:8000/
