@@ -27,7 +27,6 @@
 - [Future Enhancements](#-future-enhancements)
 - [License](#-license)
 - [Contact](#-contact)
-- [Author](#-author)
 - [Acknowledgments](#-acknowledgments)
 
 ---
