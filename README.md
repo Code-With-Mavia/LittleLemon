@@ -190,16 +190,6 @@ See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 👨‍💻 Author
-
-**Maawiah Qaiser** — *Aspiring Backend Engineer*
-
-* GitHub: [Code-With-Mavia](https://github.com/Code-With-Mavia)
-* LinkedIn: [maawiah-qaiser](https://www.linkedin.com/in/maawiah-qaiser-10793722b/)
-* Email: `maviaqaiser09@gmail.com`
-
----
-
 ## 🙌 Acknowledgments
 
 * Meta Backend Development Specialization (Coursera)
